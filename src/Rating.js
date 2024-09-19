@@ -13,7 +13,7 @@ const StarContainerStyle={
 }
 
 
-export default  function Rating({maxRating=3,color="#fcc419",size=48}) {
+export default  function Rating({maxRating=3,color="#fcc419",size=48 ,message=[],defaultRating=0,onSetMoviesRating}) {
   const textStyle={
     lineHeight:"1px",
     margin:"0",
@@ -21,10 +21,11 @@ export default  function Rating({maxRating=3,color="#fcc419",size=48}) {
     fontSize:`${size/1.5}px`,
 
 }
-const [rating,setRating] = useState(0);
+const [rating,setRating] = useState(defaultRating);
 const [TempRating,setTempRating] = useState(0);
 function handleRating(rating){
     setRating(rating);
+    onSetMoviesRating(rating);
 }
 
     return (
@@ -35,7 +36,7 @@ function handleRating(rating){
                 color={color} size={size}/>
 
                 ))}</div>
-            <p style={textStyle}>{TempRating || rating || ""}</p>
+            <p style={textStyle}>{message.length===maxRating?message[TempRating?TempRating-1:rating-1]:TempRating || rating || ""}</p>
         </div>
     );
 }
