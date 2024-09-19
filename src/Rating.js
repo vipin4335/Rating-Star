@@ -1,5 +1,13 @@
 import { useState } from "react";
-
+import Proptype from 'prop-types';
+Rating.propTypes={
+    maxRating:Proptype.number,
+    color: Proptype.string,
+    size: Proptype.number,
+    message: Proptype.arrayOf(Proptype.string),
+    defaultRating: Proptype.number,
+    onSetMoviesRating: Proptype.func.isRequired,
+}
 const containerStyle={
     display: 'flex',
     alignItems:'center',
